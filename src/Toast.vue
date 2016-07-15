@@ -1,14 +1,14 @@
 <template>
-<ul class="toast">
-  <li class="toast-message" v-for="m in messages" :key="m.id" transition="toast">
+<div class="toast">
+  <div class="toast-message" v-for="m in messages" :key="m.id" transition="toast">
     <div class="toast-message-pad">
-      <div class="toast-message-body">
-        <p class="toast-message-text">{{ m.text }}</p>
-        <button class="toast-button" type="button" @click="close(m.id)"></button>
+      <div class="toast-message-body" role="note">
+        <div class="toast-message-text">{{ m.text }}</div>
+        <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
       </div>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
 </template>
 
 <script>
@@ -53,10 +53,7 @@ export default {
   position: fixed;
   top: 10px;
   right: 10px;
-  padding: 0;
-  margin: 0;
   width: 350px;
-  list-style: none;
   z-index: 10000;
 }
 
@@ -74,10 +71,6 @@ export default {
   padding: 15px;
   background-color: #666;
   color: #fff;
-}
-
-.toast-message-text {
-  margin: 0;
 }
 
 .toast-button {
