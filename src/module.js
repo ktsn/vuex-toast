@@ -1,6 +1,6 @@
 // @flow
 
-const PREFIX = 'vuex-toast/'
+const PREFIX = '@@toast/'
 
 const ADD = `${PREFIX}ADD_TOAST_MESSAGE`
 const REMOVE = `${PREFIX}REMOVE_TOAST_MESSAGE`
@@ -17,9 +17,11 @@ function createMessage(id: number, text: string): ToastMessage {
   }
 }
 
-export function createToastModule({
-  dismissInterval = 5000
-}: ToastOptions = {}) {
+export function createToastModule(options: ToastOptions = {}) {
+  const {
+    dismissInterval = 5000
+  } = options
+
   let maxToastId = 0
 
   const state: ToastState = {
@@ -35,10 +37,7 @@ export function createToastModule({
       const id = ++maxToastId
 
       commit(ADD, createMessage(id, text))
-
-      setTimeout(() => {
-        commit(REMOVE, id)
-      }, dismissInterval)
+      setTimeout(() => commit(REMOVE, id), dismissInterval)
     },
 
     [REMOVE] ({ commit }, id) {
