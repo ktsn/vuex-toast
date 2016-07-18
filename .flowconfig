@@ -4,6 +4,6 @@
 [include]
 
 [libs]
-src/interfaces/
+flow
 
 [options]
