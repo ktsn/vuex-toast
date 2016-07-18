@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import { REMOVE_TOAST_MESSAGE } from './module'
 
@@ -19,28 +18,7 @@ export default {
 
   methods: mapActions({
     close: REMOVE_TOAST_MESSAGE
-  }),
-
-  transitions: {
-    toast: {
-      beforeEnter(el) {
-        el.style.maxHeight = '0'
-      },
-      enter(el) {
-        Vue.nextTick(() => {
-          el.style.maxHeight = `${el.scrollHeight}px`
-        })
-      },
-      beforeLeave(el) {
-        el.style.maxHeight = `${el.scrollHeight}px`
-      },
-      leave(el) {
-        Vue.nextTick(() => {
-          el.style.maxHeight = '0'
-        })
-      }
-    }
-  }
+  })
 }
 </script>
 
