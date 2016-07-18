@@ -1,14 +1,10 @@
 <template>
-<div class="toast">
-  <div class="toast-message" v-for="m in messages" :key="m.id" transition="toast">
-    <div class="toast-message-pad">
-      <div class="toast-message-body" role="note">
-        <div class="toast-message-text">{{ m.text }}</div>
-        <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
-      </div>
+  <transition-group tag="div" name="toast" class="toast">
+    <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
+      <div class="toast-message-text">{{ m.text }}</div>
+      <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
     </div>
-  </div>
-</div>
+  </transition-group>
 </template>
 
 <script>
@@ -59,18 +55,14 @@ export default {
 
 .toast-message {
   position: relative;
-  transition: 400ms cubic-bezier(0.17, 0.67, 0.17, 0.98);
-  transition-property: opacity, max-height;
-}
-
-.toast-message-pad {
-  padding-bottom: 10px;
-}
-
-.toast-message-body {
+  box-sizing: border-box;
+  margin-bottom: 10px;
   padding: 15px;
+  width: 100%;
   background-color: #666;
   color: #fff;
+  transition: 400ms cubic-bezier(0.17, 0.67, 0.17, 0.98);
+  transition-property: opacity, transform;
 }
 
 .toast-button {
@@ -97,5 +89,10 @@ export default {
 .toast-enter,
 .toast-leave-active {
   opacity: 0;
+  transform: translateY(-30px);
+}
+
+.toast-leave-active {
+  position: absolute;
 }
 </style>
