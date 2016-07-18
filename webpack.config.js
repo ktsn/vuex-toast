@@ -1,5 +1,6 @@
 /* eslint-env node */
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const vueExternal = {
   root: 'Vue',
@@ -35,6 +36,14 @@ module.exports = {
       { test: /\.json$/, loader: 'json-loader' }
     ]
   },
+  vue: {
+    loaders: {
+      css: ExtractTextPlugin.extract('css')
+    }
+  },
+  plugins: [
+    new ExtractTextPlugin('vuex-toast.css')
+  ],
   externals: {
     vue: vueExternal,
     vuex: vuexExternal

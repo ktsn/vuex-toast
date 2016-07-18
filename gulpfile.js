@@ -57,6 +57,7 @@ gulp.task('webpack:example', (done) => {
       path: path.resolve(__dirname, 'dist-examples'),
       filename: '[name]/main.js'
     },
+    vue: {},
     externals: {}
   })
 
