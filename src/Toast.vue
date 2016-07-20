@@ -1,15 +1,18 @@
 <template>
-  <transition-group tag="div" name="toast" class="toast">
-    <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
-      <div class="toast-message-text">{{ m.text }}</div>
-      <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
-    </div>
-  </transition-group>
+  <div class="toast">
+    <toast-transition>
+      <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
+        <div class="toast-message-text">{{ m.text }}</div>
+        <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
+      </div>
+    </toast-transition>
+  </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { REMOVE_TOAST_MESSAGE } from './module'
+import { DefaultTransition as ToastTransition } from './config'
 
 export default {
   computed: mapGetters({
@@ -18,7 +21,11 @@ export default {
 
   methods: mapActions({
     close: REMOVE_TOAST_MESSAGE
-  })
+  }),
+
+  components: {
+    ToastTransition
+  }
 }
 </script>
 
