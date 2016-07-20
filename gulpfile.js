@@ -14,7 +14,7 @@ const del = require('del')
 const run = require('run-sequence')
 
 gulp.task('clean', () => {
-  return del(['.tmp', 'dist', 'dist-examples'])
+  return del(['.tmp', 'dist'])
 })
 
 gulp.task('webpack', (done) => {
@@ -54,8 +54,8 @@ gulp.task('webpack:example', (done) => {
     context: path.resolve(__dirname, 'examples'),
     entry,
     output: {
-      path: path.resolve(__dirname, 'dist-examples'),
-      filename: '[name]/main.js'
+      path: path.resolve(__dirname, 'examples'),
+      filename: '[name]/build.js'
     },
     vue: {},
     externals: {}
@@ -92,10 +92,6 @@ gulp.task('build', ['clean'], (done) => {
   run('webpack', 'uglify', 'header', done)
 })
 
-gulp.task('build:example', ['clean', 'webpack:example'], () => {
-  return gulp.src(['examples/**/*.html', 'examples/**/*.css'])
-    .pipe(gulp.dest('dist-examples'))
-})
-
+gulp.task('build:example', ['webpack:example'])
 gulp.task('test', ['webpack:test', 'testem'])
 gulp.task('default', ['webpack:dev'])
