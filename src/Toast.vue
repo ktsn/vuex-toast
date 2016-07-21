@@ -1,5 +1,5 @@
 <template>
-  <div class="toast">
+  <div class="toast" :class="'toast-' + position">
     <toast-transition>
       <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
         <div class="toast-message-text">{{ m.text }}</div>
@@ -15,6 +15,15 @@ import { REMOVE_TOAST_MESSAGE } from './module'
 import { DefaultTransition as ToastTransition } from './config'
 
 export default {
+  props: {
+    position: {
+      validator(value) {
+        return /^(:?n|s|nw|ne|sw|se)$/.test(value)
+      },
+      default: 'ne'
+    }
+  },
+
   computed: mapGetters({
     messages: 'toastMessages'
   }),
@@ -29,12 +38,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+$width: 350px;
+
 .toast {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  width: 350px;
+  width: $width;
   z-index: 10000;
 }
 
@@ -66,6 +75,9 @@ export default {
   content: '\d7';
 }
 
+/**
+ * Transition
+ */
 .toast-enter-active,
 .toast-leave {
   opacity: 1;
@@ -74,10 +86,68 @@ export default {
 .toast-enter,
 .toast-leave-active {
   opacity: 0;
-  transform: translateY(-30px);
 }
 
 .toast-leave-active {
   position: absolute;
+}
+
+/**
+ * Position
+ */
+.toast-n {
+  top: 10px;
+  left: 50%;
+  margin-left: -$width / 2;
+}
+
+.toast-s {
+  bottom: 10px;
+  left: 50%;
+  margin-left: -$width / 2;
+}
+
+.toast-ne {
+  top: 10px;
+  right: 10px;
+}
+
+.toast-nw {
+  top: 10px;
+  left: 10px;
+}
+
+.toast-se {
+  bottom: 10px;
+  right: 10px;
+}
+
+.toast-sw {
+  bottom: 10px;
+  left: 10px;
+}
+
+/**
+ * Transition with position
+ */
+.toast-n,
+.toast-ne,
+.toast-nw {
+  .toast-enter,
+  .toast-leave-active {
+    transform: translateY(-20px);
+  }
+}
+
+.toast-s,
+.toast-se,
+.toast-sw {
+  .toast-enter {
+    transform: translateY(20px);
+  }
+
+  .toast-leave-active {
+    transform: translateY(-100%) translateY(20px);
+  }
 }
 </style>
