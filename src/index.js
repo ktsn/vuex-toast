@@ -3,7 +3,7 @@
 import Toast from './Toast'
 import { update } from './utils'
 
-export function createToast(options = {}) {
+export function createComponent(options = {}) {
   const {
     transition
   } = options
