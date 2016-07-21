@@ -57,7 +57,11 @@ gulp.task('webpack:example', (done) => {
       path: path.resolve(__dirname, 'examples'),
       filename: '[name]/build.js'
     },
-    vue: {},
+    vue: {
+      loaders: {
+        scss: 'style!css!sass'
+      }
+    },
     externals: {}
   })
 
