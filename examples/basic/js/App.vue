@@ -17,6 +17,16 @@
           <option value="s">s</option>
         </select>
       </label>
+
+      <label>
+        <span>Type</span>
+        <select name="type" v-model="type">
+          <option value="info">info</option>
+          <option value="success">success</option>
+          <option value="warning">warning</option>
+          <option value="danger">danger</option>
+        </select>
+      </label>
     </div>
 
     <toast :position="position"></toast>
@@ -31,12 +41,13 @@ export default {
   data: function () {
     return {
       message: 'This is toast message',
-      position: 'ne'
+      position: 'ne',
+      type: 'info'
     }
   },
   methods: {
     submit() {
-      this.addToast({ text: this.message })
+      this.addToast({ text: this.message, type: this.type })
     },
     ...mapActions({
       addToast: ADD_TOAST_MESSAGE

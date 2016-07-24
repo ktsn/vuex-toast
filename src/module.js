@@ -10,10 +10,11 @@ export {
   REMOVE as REMOVE_TOAST_MESSAGE
 }
 
-function createMessage(id: number, text: string): ToastMessage {
+function createMessage(id: number, text: string, type: string): ToastMessage {
   return {
     id,
-    text
+    text,
+    type
   }
 }
 
@@ -33,10 +34,10 @@ export function createToastModule(options: ToastOptions = {}) {
   }
 
   const actions = {
-    [ADD] ({ commit }, { text }) {
+    [ADD] ({ commit }, { text, type = 'info' }) {
       const id = ++maxToastId
 
-      commit(ADD, createMessage(id, text))
+      commit(ADD, createMessage(id, text, type))
       setTimeout(() => commit(REMOVE, id), dismissInterval)
     },
 
@@ -46,11 +47,11 @@ export function createToastModule(options: ToastOptions = {}) {
   }
 
   const mutations = {
-    [ADD] (state: ToastState, data) {
+    [ADD] (state: ToastState, data: ToastMessage) {
       state.messages.push(data)
     },
 
-    [REMOVE] (state: ToastState, id) {
+    [REMOVE] (state: ToastState, id: number) {
       state.messages = state.messages.filter(m => m.id !== id)
     }
   }

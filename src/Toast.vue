@@ -1,7 +1,7 @@
 <template>
-  <div class="toast" :class="optionClass">
+  <div class="toast" :class="positionClass">
     <toast-transition>
-      <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
+      <div class="toast-message" :class="messageTypeClass(m)" v-for="m in messages" :key="m.id" role="note">
         <div class="toast-message-text">{{ m.text }}</div>
         <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
       </div>
@@ -21,12 +21,6 @@ export default {
         return /^(:?n|s|nw|ne|sw|se)$/.test(value)
       },
       default: 'ne'
-    },
-    theme: {
-      validator(value) {
-        return /^default$/.test(value)
-      },
-      default: 'default'
     }
   },
 
@@ -35,14 +29,20 @@ export default {
       messages: 'toastMessages'
     }),
 
-    optionClass() {
-      return `toast-position-${this.position} toast-theme-${this.theme}`
+    positionClass() {
+      return `toast-position-${this.position}`
     }
   },
 
-  methods: mapActions({
-    close: REMOVE_TOAST_MESSAGE
-  }),
+  methods: {
+    ...mapActions({
+      close: REMOVE_TOAST_MESSAGE
+    }),
+
+    messageTypeClass(message) {
+      return `toast-type-${message.type}`
+    }
+  },
 
   components: {
     ToastTransition
@@ -163,11 +163,21 @@ $width: 350px;
 }
 
 /**
- * Themes
+ * Types
  */
-.toast-message {
-  .toast-theme-default & {
-    background-color: #666;
-  }
+.toast-type-info {
+  background-color: #43b4ec;
+}
+
+.toast-type-success {
+  background-color: #3add93;
+}
+
+.toast-type-warning {
+  background-color: #efd700;
+}
+
+.toast-type-danger {
+  background-color: #f3755e;
 }
 </style>

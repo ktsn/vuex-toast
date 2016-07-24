@@ -3,6 +3,7 @@
 interface ToastMessage {
   id: number;
   text: string;
+  type: string;
 }
 
 interface ToastState {
