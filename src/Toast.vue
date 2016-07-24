@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" :class="'toast-' + position">
+  <div class="toast" :class="optionClass">
     <toast-transition>
       <div class="toast-message" v-for="m in messages" :key="m.id" role="note">
         <div class="toast-message-text">{{ m.text }}</div>
@@ -21,12 +21,24 @@ export default {
         return /^(:?n|s|nw|ne|sw|se)$/.test(value)
       },
       default: 'ne'
+    },
+    theme: {
+      validator(value) {
+        return /^default$/.test(value)
+      },
+      default: 'default'
     }
   },
 
-  computed: mapGetters({
-    messages: 'toastMessages'
-  }),
+  computed: {
+    ...mapGetters({
+      messages: 'toastMessages'
+    }),
+
+    optionClass() {
+      return `toast-position-${this.position} toast-theme-${this.theme}`
+    }
+  },
 
   methods: mapActions({
     close: REMOVE_TOAST_MESSAGE
@@ -53,7 +65,6 @@ $width: 350px;
   margin-bottom: 10px;
   padding: 15px;
   width: 100%;
-  background-color: #666;
   color: #fff;
   transition: 400ms cubic-bezier(0.17, 0.67, 0.17, 0.98);
   transition-property: opacity, transform;
@@ -95,34 +106,34 @@ $width: 350px;
 /**
  * Position
  */
-.toast-n {
+.toast-position-n {
   top: 10px;
   left: 50%;
   margin-left: -$width / 2;
 }
 
-.toast-s {
+.toast-position-s {
   bottom: 10px;
   left: 50%;
   margin-left: -$width / 2;
 }
 
-.toast-ne {
+.toast-position-ne {
   top: 10px;
   right: 10px;
 }
 
-.toast-nw {
+.toast-position-nw {
   top: 10px;
   left: 10px;
 }
 
-.toast-se {
+.toast-position-se {
   bottom: 10px;
   right: 10px;
 }
 
-.toast-sw {
+.toast-position-sw {
   bottom: 10px;
   left: 10px;
 }
@@ -130,24 +141,33 @@ $width: 350px;
 /**
  * Transition with position
  */
-.toast-n,
-.toast-ne,
-.toast-nw {
+.toast-position-n,
+.toast-position-ne,
+.toast-position-nw {
   .toast-enter,
   .toast-leave-active {
     transform: translateY(-20px);
   }
 }
 
-.toast-s,
-.toast-se,
-.toast-sw {
+.toast-position-s,
+.toast-position-se,
+.toast-position-sw {
   .toast-enter {
     transform: translateY(20px);
   }
 
   .toast-leave-active {
     transform: translateY(-100%) translateY(20px);
+  }
+}
+
+/**
+ * Themes
+ */
+.toast-message {
+  .toast-theme-default & {
+    background-color: #666;
   }
 }
 </style>
