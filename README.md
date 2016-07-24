@@ -69,6 +69,40 @@ export default {
 }
 ```
 
+## API
+### `Toast`
+A Vue component that shows toast messages.
+
+- props
+  - position
+
+### `createModule(options): VuexModule`
+Create Vuex module for managing toast messages.
+
+- options
+  - dismissInterval
+
+### `createComponent(options): VueComponent`
+Create customized toast component.
+
+- options
+  - transition
+
+### Action Types
+- ADD_TOAST_MESSAGE
+  - `dispatch(ADD_TOAST_MESSAGE, { text, type })`
+- REMOVE_TOAST_MESSAGE
+  - `dispatch(REMOVE_TOAST_MESSAGE, messageId)`
+
+### Getters
+- toastMessage
+  - get all toast messages.
+
+### Toast Message Type
+- `id` Auto generated message ID
+- `text` Text of the toast message
+- `type` Type of the toast message
+
 ## License
 
 MIT
