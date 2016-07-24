@@ -18,7 +18,7 @@ function createMessage(id: number, text: string, type: string): ToastMessage {
   }
 }
 
-export function createToastModule(options: ToastOptions = {}) {
+export function createModule(options: ToastOptions = {}) {
   const {
     dismissInterval = 5000
   } = options

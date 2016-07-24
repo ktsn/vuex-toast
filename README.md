@@ -9,14 +9,14 @@ First, you should register a toast module to your Vuex store.
 ```js
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { createToastModule } from 'vuex-toast'
+import { createModule } from 'vuex-toast'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     // ...
-    toast: createToastModule({
+    toast: createModule({
       dismissInterval: 8000
     })
     // ...
