@@ -2,7 +2,7 @@
   "name": "vuex-toast",
   "version": "0.0.1",
   "author": "katashin",
-  "description": "A simple toast notification for Vuex",
+  "description": "Simple toast notification using Vuex",
   "keywords": [
     "UI",
     "Flux",
