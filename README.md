@@ -3,6 +3,10 @@
 Simple toast notification using Vuex  
 Required: Vue >= 2.0, Vuex >= 2.0
 
+## Demo
+
+http://codepen.io/ktsn/pen/Bzxkjd
+
 ## Example
 
 First, you should register a toast module to your Vuex store.
