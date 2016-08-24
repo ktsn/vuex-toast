@@ -1,0 +1,16 @@
+@charset 'utf-8';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #caf0f5;
+}
+
+body,
+input,
+select {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}

@@ -15,8 +15,12 @@ module.exports = {
     extensions: ['', '.js', '.vue']
   },
   module: {
+    preLoaders: [
+      { test: /\.scss$/, loader: 'sass' }
+    ],
     loaders: [
       { test: /\.vue$/, loader: 'vue' },
+      { test: /\.s?css$/, loader: 'style!css' },
       { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
     ]
   },
