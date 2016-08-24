@@ -14,4 +14,6 @@ conf.output = {
   filename: 'test.js'
 }
 
+conf.externals = null
+
 module.exports = conf

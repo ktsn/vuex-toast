@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { Toast, ADD_TOAST_MESSAGE } from '../../../src'
+import { Toast, ADD_TOAST_MESSAGE } from 'vuex-toast'
 import { mapActions } from 'vuex'
 
 export default {

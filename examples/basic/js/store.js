@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { createModule } from '../../../src'
+import { createModule } from 'vuex-toast'
 
 Vue.use(Vuex)
 
