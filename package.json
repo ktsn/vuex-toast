@@ -25,6 +25,7 @@
     "prepublish": "npm run flow && npm run lint && npm run build",
     "build": "cross-env NODE_ENV=production gulp build",
     "build:example": "cd examples && webpack",
+    "dev:example": "cd examples && webpack-dev-server --inline --hot",
     "flow": "flow check",
     "lint": "eslint -c .eslintrc.yml \"src/**/*\" && eslint -c test/.eslintrc.yml \"test/**/*\"",
     "test": "gulp test",
@@ -61,9 +62,10 @@
     "style-loader": "^0.13.1",
     "testem": "^1.6.0",
     "vue": "^2.0.0-rc.3",
-    "webpack": "^1.13.0"
     "vue-loader": "^9.4.0",
     "vuex": "^2.0.0-rc.5",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.15.0"
   },
   "peerDependencies": {
     "vue": "^2.0.0-beta.2",
