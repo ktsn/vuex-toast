@@ -42,36 +42,6 @@ gulp.task('webpack:test', () => {
   })
 })
 
-gulp.task('webpack:example', (done) => {
-  const files = glob.sync('examples/*/main.js')
-  const entry = {}
-  files.forEach(f => {
-    const name = f.split('/').slice(-2)[0]
-    entry[name] = `./${name}/main.js`
-  })
-
-  const config = Object.assign({}, require('./webpack.config'), {
-    context: path.resolve(__dirname, 'examples'),
-    entry,
-    output: {
-      path: path.resolve(__dirname, 'examples'),
-      filename: '[name]/build.js'
-    },
-    vue: {
-      loaders: {
-        scss: 'style!css!sass'
-      }
-    },
-    externals: {}
-  })
-
-  webpack(config, (err, stats) => {
-    if (err) throw new gutil.PluginError('webpack', err)
-    gutil.log('[webpack]', stats.toString())
-    done()
-  })
-})
-
 gulp.task('testem', () => {
   const testem = new Testem()
   testem.startDev(yaml.safeLoad(fs.readFileSync(__dirname + '/testem.yml')))

@@ -1,3 +1,5 @@
+import './main.scss'
+
 import Vue from 'vue'
 
 import store from './js/store'
