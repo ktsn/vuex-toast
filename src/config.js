@@ -2,7 +2,7 @@ export const DefaultTransition = {
   functional: true,
   render(h, { children }) {
     const data = {
-      staticAttrs: { tag: 'div', name: 'toast' }
+      attrs: { tag: 'div', name: 'toast', type: 'transition' }
     }
     return h('transition-group', data, children)
   }
