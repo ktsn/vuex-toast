@@ -1,6 +1,6 @@
 # Vuex Toast
 
-Simple toast notification using Vuex  
+Simple toast notification using Vuex
 Required: Vue >= 2.0, Vuex >= 2.0
 
 ## Demo
@@ -62,7 +62,7 @@ export default {
   methods: {
     ...mapActions({
       addToast: ADD_TOAST_MESSAGE
-    },
+    }),
 
     sendNotification(text) {
       this.addToast({
@@ -70,7 +70,7 @@ export default {
         type: 'success'
       })
     }
-  })
+  }
 }
 ```
 
@@ -107,6 +107,7 @@ Create customized toast component.
 - `id` Auto generated message ID
 - `text` Text of the toast message
 - `type` Type of the toast message
+- `dismissAfter` Optional: ovverride default dismissInterval
 
 ## License
 
