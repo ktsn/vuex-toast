@@ -107,7 +107,7 @@ Create customized toast component.
 - `id` Auto generated message ID
 - `text` Text of the toast message
 - `type` Type of the toast message
-- `dismissAfter` Optional: ovverride default dismissInterval
+- `dismissAfter` Optional: override default dismissInterval
 
 ## License
 
