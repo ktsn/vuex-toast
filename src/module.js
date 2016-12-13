@@ -34,24 +34,24 @@ export function createModule(options: ToastOptions = {}) {
   }
 
   const actions = {
-    [ADD]({ commit }, { text, type = 'info', dismissAfter = dismissInterval}) {
+    [ADD] ({ commit }, { text, type = 'info', dismissAfter = dismissInterval}) {
       const id = ++maxToastId
-    
+
       commit(ADD, createMessage(id, text, type))
       setTimeout(() => commit(REMOVE, id), dismissAfter)
     },
 
-    [REMOVE]({ commit }, id) {
+    [REMOVE] ({ commit }, id) {
       commit(REMOVE, id)
     }
   }
 
   const mutations = {
-    [ADD](state: ToastState, data: ToastMessage) {
+    [ADD] (state: ToastState, data: ToastMessage) {
       state.messages.push(data)
     },
 
-    [REMOVE](state: ToastState, id: number) {
+    [REMOVE] (state: ToastState, id: number) {
       state.messages = state.messages.filter(m => m.id !== id)
     }
   }
