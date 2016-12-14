@@ -10,11 +10,12 @@ export {
   REMOVE as REMOVE_TOAST_MESSAGE
 }
 
-function createMessage(id: number, text: string, type: string): ToastMessage {
+function createMessage(id: number, text: string, type: string, dismissAfter: number): ToastMessage {
   return {
     id,
     text,
-    type
+    type,
+    dismissAfter
   }
 }
 
@@ -37,7 +38,7 @@ export function createModule(options: ToastOptions = {}) {
     [ADD] ({ commit }, { text, type = 'info', dismissAfter = dismissInterval}) {
       const id = ++maxToastId
 
-      commit(ADD, createMessage(id, text, type))
+      commit(ADD, createMessage(id, text, type, dismissAfter))
       setTimeout(() => commit(REMOVE, id), dismissAfter)
     },
 

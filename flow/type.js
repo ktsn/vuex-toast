@@ -4,7 +4,7 @@ interface ToastMessage {
   id: number;
   text: string;
   type: string;
-  dismissAfter?: number;
+  dismissAfter: number;
 }
 
 interface ToastState {

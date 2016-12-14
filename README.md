@@ -67,7 +67,8 @@ export default {
     sendNotification(text) {
       this.addToast({
         text,
-        type: 'success'
+        type: 'success',
+        dismissAfter: 10000
       })
     }
   }
@@ -95,7 +96,7 @@ Create customized toast component.
 
 ### Action Types
 - ADD_TOAST_MESSAGE
-  - `dispatch(ADD_TOAST_MESSAGE, { text, type })`
+  - `dispatch(ADD_TOAST_MESSAGE, { text, type, dismissAfter })`
 - REMOVE_TOAST_MESSAGE
   - `dispatch(REMOVE_TOAST_MESSAGE, messageId)`
 
@@ -107,7 +108,7 @@ Create customized toast component.
 - `id` Auto generated message ID
 - `text` Text of the toast message
 - `type` Type of the toast message
-- `dismissAfter` Optional: override default dismissInterval
+- `dismissAfter` Milli-second that indicates the message dismiss after this time
 
 ## License
 
