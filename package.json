@@ -11,7 +11,7 @@
     "toast"
   ],
   "license": "MIT",
-  "main": "dist/vuex-toast.js",
+  "main": "dist/vuex-toast.cjs.js",
   "files": [
     "dist"
   ],
@@ -23,14 +23,15 @@
   },
   "scripts": {
     "prepublish": "npm run flow && npm run lint && npm run build",
-    "build": "cross-env NODE_ENV=production gulp build",
+    "build": "npm run build:cjs && npm run build:dev && npm run build:prod",
+    "build:cjs": "rollup -c rollup.config.js -f cjs -o dist/vuex-toast.cjs.js",
+    "build:dev": "cross-env NODE_ENV=development rollup -c rollup.config.js -f umd -o dist/vuex-toast.js",
+    "build:prod": "cross-env NODE_ENV=production rollup -c rollup.config.js -f umd | uglifyjs -mc warnings=false --comments -o dist/vuex-toast.min.js",
     "build:example": "cd examples && webpack",
     "dev:example": "cd examples && webpack-dev-server --inline --hot",
     "flow": "flow check",
     "lint": "eslint --ext .js,.vue src test flow example",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "gulp test",
-    "test:ci": "webpack --config webpack.config.test.js && testem ci --launch Firefox,PhantomJS"
+    "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",

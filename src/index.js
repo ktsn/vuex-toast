@@ -1,6 +1,6 @@
 // @flow
 
-import Toast from './Toast'
+import Toast from './Toast.vue'
 import { update } from './utils'
 
 export function createComponent(options = {}) {
