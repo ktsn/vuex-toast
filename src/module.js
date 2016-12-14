@@ -35,7 +35,7 @@ export function createModule(options: ToastOptions = {}) {
   }
 
   const actions = {
-    [ADD] ({ commit }, { text, type = 'info', dismissAfter = dismissInterval}) {
+    [ADD] ({ commit }, { text, type = 'info', dismissAfter = dismissInterval }) {
       const id = ++maxToastId
 
       commit(ADD, createMessage(id, text, type, dismissAfter))

@@ -1,30 +1,9 @@
 ---
-  extends: eslint:recommended
+  extends: eslint-config-ktsn
   parser: babel-eslint
   plugins:
     - html
-    - flow-vars
-  env:
-    es6: true
-    commonjs: true
-    browser: true
-  parserOptions:
-    ecmaVersion: 6
-    sourceType: module
+    - flowtype
   rules:
-    dot-notation: 2
-    eqeqeq: [2, smart]
-    no-eval: 2
-    no-use-before-define: [2, nofunc]
-    radix: [1, as-needed]
-    no-loop-func: 1
-    no-multi-spaces: 1
-    no-warning-comments: 1
-    no-unused-vars: 1
-    camelcase: [1, {properties: never}]
-    indent: [1, 2]
-    quotes: [1, single]
-    semi: [1, never]
-    strict: [2, global]
-    flow-vars/define-flow-type: 1
-    flow-vars/use-flow-type: 1
+    flowtype/define-flow-type: 1
+    flowtype/use-flow-type: 1

@@ -1,7 +1,11 @@
 # Vuex Toast
 
 Simple toast notification using Vuex
-Required: Vue >= 2.0, Vuex >= 2.0
+
+## Requirements
+
+- Vue >= 2.0
+- Vuex >= 2.0
 
 ## Demo
 
