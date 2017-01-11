@@ -11,23 +11,19 @@ module.exports = {
     alias: {
       'vuex-toast': path.resolve(__dirname, '../src/index.js')
     },
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.vue']
+    extensions: ['.js', '.vue']
   },
   module: {
-    preLoaders: [
-      { test: /\.scss$/, loader: 'sass' }
-    ],
-    loaders: [
-      { test: /\.vue$/, loader: 'vue' },
-      { test: /\.s?css$/, loader: 'style!css' },
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
+    rules: [
+      { enforce: 'pre', test: /\.scss$/, loader: 'sass-loader' },
+      { test: /\.vue$/, loader: 'vue-loader', options: {
+        loaders: {
+          scss: 'style-loader!css-loader!sass-loader'
+        }
+      }},
+      { test: /\.s?css$/, loader: 'style-loader!css-loader' },
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
-  },
-  vue: {
-    loaders: {
-      scss: 'style!css!sass'
-    }
   }
 }
 
