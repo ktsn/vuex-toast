@@ -112,6 +112,7 @@ Create customized toast component.
 - `id` Auto generated message ID
 - `text` Text of the toast message
 - `type` Type of the toast message
+  - `info`, `success`, `warning`, or `danger`
 - `dismissAfter` Milli-second that indicates the message dismiss after this time
 
 ## License
