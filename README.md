@@ -13,12 +13,15 @@ http://codepen.io/ktsn/pen/Bzxkjd
 
 ## Example
 
-First, you should register a toast module to your Vuex store.
+First, you should register a toast module to your Vuex store. You can use a default style at `dist/vuex-toast.css`.
 
 ```js
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { createModule } from 'vuex-toast'
+
+// If you want to use the default style (with webpack css-loader)
+import 'vuex-toast/dist/vuex-toast.css'
 
 Vue.use(Vuex)
 
@@ -112,7 +115,8 @@ Create customized toast component.
 - `id` Auto generated message ID
 - `text` Text of the toast message
 - `type` Type of the toast message
-  - `info`, `success`, `warning`, or `danger`
+  - You can use any value for styling purpose.
+  - There are default styles for `info`, `success`, `warning`, and `danger`
 - `dismissAfter` Milli-second that indicates the message dismiss after this time
 
 ## License
