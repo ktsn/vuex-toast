@@ -2,7 +2,8 @@
   <div class="toast" :class="positionClass">
     <toast-transition>
       <div class="toast-message" :class="messageTypeClass(m)" v-for="m in messages" :key="m.id" role="note">
-        <div class="toast-message-text">{{ m.text }}</div>
+        <div class="toast-message-text" v-if="html" v-html="m.text"></div>
+        <div class="toast-message-text" v-else>{{ m.text }}</div>
         <button class="toast-button" aria-label="Close" type="button" @click="close(m.id)"></button>
       </div>
     </toast-transition>
@@ -21,7 +22,9 @@ export default {
         return /^(:?n|s|nw|ne|sw|se)$/.test(value)
       },
       default: 'ne'
-    }
+    },
+
+    html: Boolean
   },
 
   computed: {

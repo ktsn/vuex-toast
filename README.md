@@ -88,6 +88,7 @@ A Vue component that shows toast messages.
 
 - props
   - position
+  - html
 
 ### `createModule(options): VuexModule`
 Create Vuex module for managing toast messages.
