@@ -22,13 +22,14 @@
     "url": "https://github.com/ktsn/vuex-toast.git"
   },
   "scripts": {
-    "prepublish": "npm run flow && npm run lint && npm run build",
+    "prepublishOnly": "npm run flow && npm run lint && npm run build",
     "build": "npm run build:cjs && npm run build:dev && npm run build:prod",
     "build:cjs": "rollup -c rollup.config.js -f cjs -o dist/vuex-toast.cjs.js",
     "build:dev": "cross-env NODE_ENV=development rollup -c rollup.config.js -f umd -o dist/vuex-toast.js",
     "build:prod": "cross-env NODE_ENV=production rollup -c rollup.config.js -f umd | uglifyjs -mc warnings=false --comments -o dist/vuex-toast.min.js",
     "build:example": "cd examples && webpack",
     "dev:example": "cd examples && webpack-dev-server --inline --hot",
+    "test": "npm run flow && npm run lint",
     "flow": "flow check",
     "lint": "eslint --ext .js,.vue src test flow example",
     "lint:fix": "npm run lint -- --fix"
