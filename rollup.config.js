@@ -29,7 +29,7 @@ const banner = `/*!
  * ${meta.homepage}/blob/master/LICENSE
  */`
 
-const moduleName = 'VuexToast'
+const name = 'VuexToast'
 
 const plugins = [
   vue({
@@ -49,7 +49,7 @@ const plugins = [
         }
 
          // autoprefixer
-        prefixer.process(result.css).then(result => {
+        prefixer.process(result.css, { from: undefined }).then(result => {
           result.warnings().forEach(warn => {
             console.warn(warn.toString())
           })
@@ -71,12 +71,14 @@ if (process.env.NODE_ENV) {
 }
 
 module.exports = {
-  entry: 'src/index.js',
+  input: 'src/index.js',
   plugins,
-  moduleName,
-  banner,
-  globals: {
-    vuex: 'Vuex'
+  output: {
+    name,
+    banner,
+    globals: {
+      vuex: 'Vuex'
+    }
   },
   external: [
     'vuex'
