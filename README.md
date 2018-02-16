@@ -87,8 +87,10 @@ export default {
 A Vue component that shows toast messages.
 
 - props
-  - position
-  - html
+  - `position`
+  - `html`
+  - `namespace`
+    - Vuex module's namespace if you install toast module into some namespaced module.
 
 ### `createModule(options): VuexModule`
 Create Vuex module for managing toast messages.
