@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import { REMOVE_TOAST_MESSAGE } from './module'
 import { DefaultTransition as ToastTransition } from './config'
 
@@ -24,23 +23,43 @@ export default {
       default: 'ne'
     },
 
+    namespace: {
+      type: String,
+      default: ''
+    },
+
     html: Boolean
   },
 
   computed: {
-    ...mapGetters({
-      messages: 'toastMessages'
-    }),
+    messages() {
+      return this.$store.getters[this.normalizedNamespace + 'toastMessages']
+    },
 
     positionClass() {
       return `toast-position-${this.position}`
+    },
+
+    normalizedNamespace() {
+      if (this.namespace === '') {
+        return ''
+      }
+
+      if (!/\/$/.test(this.namespace)) {
+        return this.namespace + '/'
+      }
+
+      return this.namespace
     }
   },
 
   methods: {
-    ...mapActions({
-      close: REMOVE_TOAST_MESSAGE
-    }),
+    close(id) {
+      this.$store.dispatch(
+        this.normalizedNamespace + REMOVE_TOAST_MESSAGE,
+        id
+      )
+    },
 
     messageTypeClass(message) {
       return `toast-type-${message.type}`
