@@ -11,6 +11,11 @@ Simple toast notification using Vuex
 
 http://codepen.io/ktsn/pen/Bzxkjd
 
+## Install
+
+```npm install vuex-toast --save```
+
+
 ## Example
 
 First, you should register a toast module to your Vuex store. You can use a default style at `dist/vuex-toast.css`.
