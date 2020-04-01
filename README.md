@@ -101,7 +101,7 @@ A Vue component that shows toast messages.
 Create Vuex module for managing toast messages.
 
 - options
-  - dismissInterval
+  - `dismissInterval` Default time after which the messages is dismissed
 
 ### `createComponent(options): VueComponent`
 Create customized toast component.
