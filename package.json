@@ -1,6 +1,6 @@
 {
   "name": "vuex-toast",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "katashin",
   "description": "Simple toast notification using Vuex",
   "keywords": [
